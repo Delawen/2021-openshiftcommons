@@ -22,6 +22,6 @@ from('telegram:bots?authorizationToken=1758774007:AAHuL0ReJJs_-XBQK39MEGEqnlKBwT
 .log("${body}")
 .to('kafka:camelsightings?brokers=demo-cluster-kafka-bootstrap:9092')
 .setBody()
-      .simple('Thank you for reporting your camel sighting.')
+      .simple('🐪 Thank you for reporting your camel sighting.')
       .to('telegram:bots?authorizationToken=1758774007:AAHuL0ReJJs_-XBQK39MEGEqnlKBwTgBiUU');
 
