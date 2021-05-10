@@ -1,0 +1,26 @@
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: kafka-to-es-binding
+spec:
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: kafka-source
+    properties:
+      brokers: "demo-cluster-kafka-bootstrap:9092"
+      topic: "camelsightings"
+  sink:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: elasticsearch-index-sink
+    properties:
+      clusterName: "quickstart"
+      hostAddresses: "elasticsearch-kafka.apps.mariasde.rhmw-integrations.net:80"
+      indexName: "camelsightings"
+      user: "elastic"
+      password: "-------------------"
+      enableSSL: false
+
