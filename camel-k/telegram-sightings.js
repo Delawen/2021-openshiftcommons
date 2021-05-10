@@ -15,13 +15,13 @@
 // limitations under the License.
 
 // Write your routes here, for example:
-from('telegram:bots?authorizationToken=1758774007:AAHuL0ReJJs_-XBQK39MEGEqnlKBwTgBiUU')
-.setBody()
-.simple("{\"sighting\": \"${body}\", \"where\": \"telegram\"}")
-.marshal().json()
-.log("${body}")
-.to('kafka:camelsightings?brokers=demo-cluster-kafka-bootstrap:9092')
-.setBody()
-      .simple('🐪 Thank you for reporting your camel sighting.')
-      .to('telegram:bots?authorizationToken=1758774007:AAHuL0ReJJs_-XBQK39MEGEqnlKBwTgBiUU');
+from('telegram:bots?authorizationToken=<your token here>')
+    .setBody()
+    .simple("{\"sighting\": \"${body}\", \"where\": \"telegram\"}")
+    .marshal().json()
+    .log("${body}")
+    .to('kafka:camelsightings?brokers=demo-cluster-kafka-bootstrap:9092')
+    .setBody()
+    .simple('🐪 Thank you for reporting your camel sighting.')
+    .to('telegram:bots?authorizationToken=<your token here>');
 
